@@ -1,9 +1,15 @@
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const navbar = document.getElementById('navbar');
+    const navbar = document.querySelector('.navbar') || document.getElementById('navbar');
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
+
+    // Check if elements exist before adding event listeners
+    if (!navbar || !navToggle || !navMenu) {
+        console.warn('Navigation elements not found. Navbar functionality may be limited.');
+        return;
+    }
 
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
@@ -14,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Mobile menu toggle
+    // Mobile Menu Toggle - NOW ACTIVE
     navToggle.addEventListener('click', function() {
         navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
@@ -31,16 +37,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
+            const href = this.getAttribute('href');
             
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+            // Check if it's a same-page anchor link
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(href);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
@@ -121,16 +131,20 @@ document.addEventListener('DOMContentLoaded', function() {
     productCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             const icon = this.querySelector('.product-icon');
-            icon.style.transform = 'scale(1.2) rotate(10deg)';
+            if (icon) {
+                icon.style.transform = 'scale(1.2) rotate(10deg)';
+            }
         });
 
         card.addEventListener('mouseleave', function() {
             const icon = this.querySelector('.product-icon');
-            icon.style.transform = 'scale(1) rotate(0deg)';
+            if (icon) {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            }
         });
     });
 
-    // Button click effects
+    // Button click effects with ripple
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -154,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add ripple effect styles
+    // Add ripple effect styles dynamically
     const style = document.createElement('style');
     style.textContent = `
         button {
@@ -181,21 +195,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
 
     // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        if (hero) {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
             hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-    });
-
-    // Form validation (if forms are added later)
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
+        });
     }
 
-    // Lazy loading for images (if more images are added)
+    // Lazy loading for images
     const images = document.querySelectorAll('img[data-src]');
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -255,36 +263,13 @@ sectionStyle.textContent = `
 `;
 document.head.appendChild(sectionStyle);
 
+// Form validation helper function
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
 
-const navbar = document.getElementById('navbar');
-const navToggle = document.getElementById('nav-toggle');
-const navMenu = document.getElementById('nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
-
-// 1. Navbar Scroll Effect
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) 
-    {
-        navbar.classList.add('scrolled');
-    } 
-    else 
-    {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// 2. Mobile Menu Toggle
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
-
-// 3. Close menu when a link is clicked
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        if (navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-    });
-});
+// Export validation function if needed
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { validateEmail };
+}

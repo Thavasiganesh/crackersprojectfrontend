@@ -8,42 +8,24 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-fireworks"></i>
-                <span>SRG PYRO PARK</span>
-            </div>
-            
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#productlist" class="nav-link">Product List</a>
-                <a href="#safety" class="nav-link">Safety Tips</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+    <!-- Navigation -->
+    <div id="navbar"></div>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">WELCOME TO OUR SHOP</h1>
             <p class="hero-subtitle">Experience the magic of celebrations with premium quality fireworks</p>
             <p class="hero-description">Your trusted partner for safe, spectacular, and memorable moments</p>
-            <button class="shop-btn">
+            <button class="shop-btn" onclick="navigateToProducts()">
                 <i class="fas fa-shopping-cart"></i>
                 Shop Now
             </button>
         </div>
     </section>
 
+    <!-- Quick Product Preview -->
     <section id="productlist" class="products">
         <div class="container">
             <div class="section-header">
@@ -52,63 +34,63 @@
             </div>
             
             <div class="products-grid">
-                <div class="product-card">
+                <div class="product-card" onclick="navigateToProducts()">
                     <div class="product-icon">🆕</div>
                     <h3>New Arrivals</h3>
                     <p>The latest and greatest fireworks</p>
                     <button class="product-btn">View Products →</button>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" onclick="navigateToProducts()">
                     <div class="product-icon">🎪</div>
                     <h3>Baby's Collection</h3>
                     <p>Safe crackers for little ones</p>
                     <button class="product-btn">View Products →</button>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card" onclick="navigateToProducts()">
                     <div class="product-icon">💥</div>
                     <h3>Single Sounds</h3>
                     <p>Classic single burst crackers</p>
                     <button class="product-btn">View Products →</button>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card" onclick="navigateToProducts()">
                     <div class="product-icon">🌪️</div>
                     <h3>Ground Chakkars</h3>
                     <p>Spinning ground fireworks</p>
                     <button class="product-btn">View Products →</button>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card" onclick="navigateToProducts()">
                     <div class="product-icon">🌸</div>
                     <h3>Flower Pots</h3>
                     <p>Beautiful fountain effects</p>
                     <button class="product-btn">View Products →</button>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card" onclick="navigateToProducts()">
                     <div class="product-icon">✨</div>
                     <h3>Sparklers</h3>
                     <p>Hand-held sparkling wonders</p>
                     <button class="product-btn">View Products →</button>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card" onclick="navigateToProducts()">
                     <div class="product-icon">🚀</div>
                     <h3>Skyshots</h3>
                     <p>High-flying aerial displays</p>
                     <button class="product-btn">View Products →</button>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card" onclick="navigateToProducts()">
                     <div class="product-icon">🎆</div>
                     <h3>Rockets</h3>
                     <p>Powerful rocket fireworks</p>
                     <button class="product-btn">View Products →</button>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card" onclick="navigateToProducts()">
                     <div class="product-icon">🎁</div>
                     <h3>Gift Box Items</h3>
                     <p>Curated gift collections</p>
@@ -118,6 +100,7 @@
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="welcome">
         <div class="container">
             <h2>WELCOME TO SRG PYRO PARK</h2>
@@ -126,15 +109,17 @@
         </div>
     </section>
 
+    <!-- Diwali Offer Section -->
     <section class="diwali-offer">
         <div class="offer-overlay"></div>
         <div class="container">
             <h2>🪔 DIWALI SPECIAL OFFER 🪔</h2>
             <p>Get up to 30% off on all Diwali collections! Limited time offer.</p>
-            <button class="offer-btn">Claim Offer Now</button>
+            <button class="offer-btn" onclick="navigateToProducts()">Claim Offer Now</button>
         </div>
     </section>
 
+    <!-- Why Choose Us Section -->
     <section class="why-choose">
         <div class="container">
             <div class="section-header">
@@ -178,6 +163,7 @@
         </div>
     </section>
 
+    <!-- Stats Section -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
@@ -191,7 +177,7 @@
                 
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-fireworks"></i> 
+                        <i class="fas fa-sparkles"></i> 
                     </div>
                     <div class="stat-number">200+</div>
                     <div class="stat-label">Products</div>
@@ -216,6 +202,7 @@
         </div>
     </section>
 
+    <!-- Business Types Section -->
     <section class="business-types">
         <div class="container">
             <div class="business-grid">
@@ -240,12 +227,13 @@
                         <li>✓ Safe handling instructions</li>
                         <li>✓ Gift wrapping available</li>
                     </ul>
-                    <button class="business-btn">Visit Our Store</button>
+                    <button class="business-btn" onclick="navigateToProducts()">Visit Our Store</button>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Safety Tips Section -->
     <section id="safety" class="safety-tips">
         <div class="container">
             <div class="section-header">
@@ -296,60 +284,51 @@
         </div>
     </section>
 
-    <footer id="contact" class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <i class="fas fa-sparkles"></i>
-                        <span>SRG PYRO PARK</span>
-                    </div>
-                    <p>Your trusted partner for premium quality fireworks and celebrations. Making moments memorable since 2008.</p>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+91 98765 43210</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>info@srgpyropark.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Celebration Street,<br>Fireworks District,<br>City - 123456</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Business Hours</h3>
-                    <div class="hours">
-                        <div>Monday - Saturday: 9:00 AM - 8:00 PM</div>
-                        <div>Sunday: 10:00 AM - 6:00 PM</div>
-                        <div class="safety-notice">
-                            <strong>Safety First:</strong> Please follow all safety guidelines when using fireworks.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 SRG Pyro Park. All rights reserved. | Designed for safe celebrations</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer -->
+    <div id="footer"></div>
 
+    <!-- Scripts -->
+    <script>
+        // Load navbar
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+                // Initialize navbar functionality after loading
+                initializeFooter();
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });
+
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+                // Initialize navbar functionality after loading
+                initializeNavbar();
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });    
+
+        function navigateToProducts() {
+            window.location.href = 'productlist.html';
+        }
+
+        function initializeNavbar() {
+            // This function will be called after navbar is loaded
+            if (window.initNavbarFunctionality) {
+                window.initNavbarFunctionality();
+            }
+        }
+        function initializeFooter() {
+            // This function will be called after footer is loaded
+            if (window.initFooterFunctionality) {
+                window.initFooterFunctionality();
+            }
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
