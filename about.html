@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - SRG Pyro Park</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+     .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: #1f2937;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fbbf24;
+            text-decoration: none;
+        }
+
+        .nav-logo i {
+            margin-right: 10px;
+            color: #dc2626;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #dc2626;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+            color: #fbbf24;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 45vh;
+            min-height: 350px;
+            margin-top: 70px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://images.pexels.com/photos/1387174/pexels-photo-1387174.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.8), rgba(251, 191, 36, 0.6));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f9fafb;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* About Section */
+    #about {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    #about h2 {
+      color: #ff4e00;
+      margin-bottom: 20px;
+    }
+
+    /* Brands Carousel */
+    #brands {
+      padding: 40px 20px;
+      text-align: center;
+      background: #fff;
+    }
+
+    #brand-slider {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    #brand-track {
+      display: flex;
+      animation: scroll 25s linear infinite;
+    }
+
+    #brand-track img {
+      width: 120px;
+      margin: 0 20px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Mission & Vision */
+    #mission-vision {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #ff4e00, #ff9966);
+      margin-bottom: 60px;
+      border-radius: 12px;
+    }
+
+    .mv-card {
+      background: #fff;
+      margin: 15px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      flex: 1 1 300px;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    /* Special View Section */
+    #view-container {
+      background: linear-gradient(135deg, #ff4e00, #ff9966);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      margin-bottom: 60px;
+      border-radius: 12px;
+    }
+
+    #view-container h2 {
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    #view-container .btn-view {
+      padding: 12px 25px;
+      background: #fff;
+      color: #ff4e00;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    #view-container .btn-view:hover {
+      background: #ffe0d1;
+      color: #cc3d00;
+    }
+
+    /* Extra Info */
+    #extra-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 60px 20px;
+    }
+
+    .info-card {
+      background: #f3f3f3;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+  /* Footer */
+    .footer {
+    background: #1f2937;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-logo i {
+    margin-right: 10px;
+    color: #fbbf24;
+}
+
+.footer-section p {
+    color: #d1d5db;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.rating {
+    display: flex;
+    gap: 5px;
+}
+
+.rating i {
+    color: #fbbf24;
+}
+
+.footer-section h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fbbf24;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.contact-item i {
+    color: #fbbf24;
+    margin-top: 2px;
+}
+
+.hours div {
+    margin-bottom: 10px;
+    color: #d1d5db;
+}
+
+.safety-notice {
+    background: #dc2626;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 20px;
+    text-align: center;
+    color: #d1d5db;
+}
+
+/* Cart Modal */
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-content {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-header {
+    background: linear-gradient(45deg, #dc2626, #f59e0b);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close-cart:hover {
+    transform: rotate(90deg);
+}
+
+#cart-items {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #e5e7eb;
+    gap: 15px;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-info h4 {
+    margin: 0 0 5px 0;
+    color: #1f2937;
+}
+
+.cart-item-info p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.qty-btn:hover {
+    background: #991b1b;
+    transform: scale(1.1);
+}
+
+.cart-total {
+    padding: 20px;
+    border-top: 2px solid #e5e7eb;
+    background: #f9fafb;
+}
+
+.cart-total h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.5rem;
+    color: #1f2937;
+    text-align: center;
+}
+
+.checkout-btn {
+    width: 100%;
+    background: linear-gradient(45deg, #dc2626, #f59e0b);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+}
+
+/* Empty State */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-state h3 {
+    font-size: 1.8rem;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #6b7280;
+    font-size: 1.1rem;
+}
+
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: #1f2937;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 20px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu .nav-link {
+        color: white;
+        margin: 10px 0;
+    }
+
+    .nav-menu .nav-link::after {
+        background-color: #dc2626;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-logo {
+        color: white;
+    }
+
+    .navbar.scrolled .nav-logo {
+        color: #fbbf24;
+    }
+
+    .nav-toggle .bar {
+        background: white;
+    }
+
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .products-hero {
+        height: 50vh;
+    }
+
+    .products-hero .hero-title {
+        font-size: 2rem;
+    }
+
+    .products-hero .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .business-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .safety-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .contact-item {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-item span {
+        text-align: left;
+    }
+
+    .contact-item:nth-child(3) {
+        flex-direction: column;
+    }
+
+    .contact-item:nth-child(3) span {
+        text-align: center;
+    }
+    
+    .category-filters {
+        gap: 10px;
+    }
+
+    .category-btn {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+    }
+
+    .cart-icon {
+        margin-left: 10px;
+    }
+
+    .cart-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .search-bar {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        padding: 20px;
+    }
+
+    .product-image {
+        font-size: 3rem;
+        height: 60px;
+    }
+
+    .product-name {
+        font-size: 1.2rem;
+        min-height: 40px;
+    }
+
+    .product-price {
+        font-size: 1.3rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .business-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .business-card {
+        padding: 30px 20px;
+    }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-sparkles"></i>
+                <span>SRG PYRO PARK</span>
+            </a>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="productlist.html" class="nav-link">Products</a>
+                <a href="safety.html" class="nav-link">Safety Tips</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">SRG PYRO PARK - Premium Fire Crackers</h1>
+            <p class="hero-subtitle">Light up your celebrations with our amazing collection of crackers</p>
+        </div>
+    </section>
+
+
+  <!-- Hero Section
+  <header id="hero">
+    <img src="images/hero-fireworks.png" alt="Fireworks" id="hero-image">
+    <div id="hero-text">
+      <h1>About SRG Pyro Park</h1>
+      <p>Lighting up celebrations for over 15 years</p>
+    </div>
+  </header> -->
+
+  <main>
+    <!-- About Section -->
+    <section id="about">
+      <h2>Welcome to SRG Pyro Park</h2>
+      <p>
+        For over 15 years, SRG Pyro Park has been a trusted name in fireworks and celebrations.
+        Located in Sivakasi, we specialize in high-quality crackers that combine excitement,
+        safety, and tradition.
+      </p>
+    </section>
+
+    <!-- Brands Carousel -->
+    <section id="brands">
+      <h2>Brands We Use</h2>
+      <div id="brand-slider">
+        <div id="brand-track">
+          <img src="images/brand1.png" alt="Brand 1">
+          <img src="images/brand2.webp" alt="Brand 2">
+          <img src="images/brand3.png" alt="Brand 3">
+          <img src="images/brand4.webp" alt="Brand 4">
+          <img src="images/brand5.jpeg" alt="Brand 5">
+          <img src="images/brand6.jpg" alt="Brand 6">
+          <img src="images/brand1.png" alt="Brand 1">
+          <img src="images/brand2.webp" alt="Brand 2">
+          <img src="images/brand3.png" alt="Brand 3">
+          <img src="images/brand4.webp" alt="Brand 4">
+          <img src="images/brand5.jpeg" alt="Brand 5">
+          <img src="images/brand6.jpg" alt="Brand 6">
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section id="mission-vision">
+      <div class="mv-card">
+        <h3>Our Mission</h3>
+        <p>To provide safe, high-quality, and affordable fireworks that spread joy and light up every celebration.</p>
+      </div>
+      <div class="mv-card">
+        <h3>Our Vision</h3>
+        <p>To be the most trusted and innovative fireworks brand in India, while promoting safety and sustainability.</p>
+      </div>
+    </section>
+
+    <!-- Pricelist View Section -->
+    <section id="view-container">
+      <h2>We have handpicked your favorite crackers in our pricelist.. Please check it .. !!!</h2>
+      <a href="price.html" class="btn-view">View More …</a>
+    </section>
+
+    <!-- Extra Info -->
+    <section id="extra-info">
+      <div class="info-card">
+        <h3>📌 Shop Opening Hours</h3>
+        <p>Monday – Saturday: 9:00 AM – 9:00 PM</p>
+        <p>Sunday: 10:00 AM – 6:00 PM</p>
+      </div>
+
+      <div class="info-card">
+        <h3>🎉 Special Festival Offers</h3>
+        <p>Exclusive discounts during Diwali, New Year, and Weddings. Don’t miss our festive packs!</p>
+      </div>
+
+      <div class="info-card">
+        <h3>🌱 Eco-Friendly Crackers</h3>
+        <p>We proudly offer eco-friendly fireworks that reduce smoke and sound pollution, making celebrations safer for everyone.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>🚚 Delivery Information</h3>
+        <p>We deliver across Tamil Nadu with same-day delivery in Sivakasi and nearby districts.</p>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-sparkles"></i>
+                        <span>SRG PYRO PARK</span>
+                    </div>
+                    <p>Your trusted partner for premium quality fireworks and celebrations. Making moments memorable since 2008.</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@srgpyropark.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Celebration Street,<br>Fireworks District,<br>City - 123456</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Business Hours</h3>
+                    <div class="hours">
+                        <div>Monday - Saturday: 9:00 AM - 8:00 PM</div>
+                        <div>Sunday: 10:00 AM - 6:00 PM</div>
+                        <div class="safety-notice">
+                            <strong>Safety First:</strong> Please follow all safety guidelines when using fireworks.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 SRG Pyro Park. All rights reserved. | Designed for safe celebrations</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+        // Products data from backend endpoint
+        const API_BASE_URL = 'http://localhost:8080/api';
+        const PRODUCTS_ENDPOINT=`${API_BASE_URL}/products`; 
+        let products = [];
+
+        let cart = [];
+
+        const categoryIcons = {
+            'sparklers': '✨',
+            'rockets': '🚀',
+            'fountains': '⛲',
+            'wheels': '🎡',
+            'bombs': '💥',
+            'default': '🎆'
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setupNavbar();
+            setupEventListeners();
+            fetchProductsByCategory("all");
+        });
+
+        // Fetch products by category
+        async function fetchProductsByCategory(category) {
+            const grid = document.getElementById('products-grid');
+
+            try {
+                grid.innerHTML = `
+                    <div class="loading">
+                        <i class="fas fa-spinner"></i>
+                        <p>Loading products...</p>
+                    </div>
+                `;
+
+                // Build endpoint dynamically
+                const url = category === 'all' 
+                    ? PRODUCTS_ENDPOINT 
+                    : `${PRODUCTS_ENDPOINT}?category=${category}`;
+
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                products = data.map(item => ({
+                    id: item.id,
+                    name: item.product_name || item.productName,
+                    price: item.net_rate || item.netRate,
+                    category: (item.product_category || item.productCategory || '').toLowerCase(),
+                    description: `Premium ${item.product_name || item.productName}`,
+                    image: getCategoryIcon(item.product_category || item.productCategory)
+                }));
+
+                displayProducts(products);
+
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                grid.innerHTML = `
+                    <div class="error-state">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Failed to load products</h3>
+                        <p>${error.message}</p>
+                        <button class="category-btn" onclick="fetchProductsByCategory('${category}')" style="margin-top: 20px;">
+                            <i class="fas fa-redo"></i> Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+
+        function getCategoryIcon(category) {
+            if (!category) return categoryIcons.default;
+            
+            const cat = category.toLowerCase();
+            return categoryIcons[cat] || categoryIcons.default;
+        }
+
+        // Setup navbar
+        function setupNavbar() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            document.getElementById('search-input').addEventListener('input', handleSearch);
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', handleCategoryFilter);
+            });
+        }
+
+        // Display products
+        function displayProducts(productsToShow) {
+            const grid = document.getElementById('products-grid');
+            
+            if (productsToShow.length === 0) {
+                grid.innerHTML = '<div class="empty-state"><h3>No products found</h3><p>Try adjusting your search or filters</p></div>';
+                return;
+            }
+
+            grid.innerHTML = productsToShow.map(product => `
+                <div class="product-card">
+                    <div class="product-image">${product.image}</div>
+                    <h3 class="product-name">${product.name}</h3>
+                    <div class="product-price">₹${product.price}</div>
+                    <p class="product-description">${product.description}</p>
+                    <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+
+        // Search functionality
+        function handleSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+            
+            let filtered = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.description.toLowerCase().includes(searchTerm)
+            );
+            
+            if (activeCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === activeCategory);
+            }
+            
+            displayProducts(filtered);
+        }
+
+        // Category filter
+        function handleCategoryFilter(e) {
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+
+            const category = e.target.dataset.category;
+            fetchProductsByCategory(category);
+        }
+
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCartUI();
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            updateCartModal();
+        }
+
+        // Update cart modal
+        function updateCartModal() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Your cart is empty</p>';
+                cartTotal.textContent = '0';
+                return;
+            }
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p>₹${item.price} each</p>
+                    </div>
+                    <div class="cart-item-controls">
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = total;
+        }
+
+        // Update quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.id !== productId);
+                }
+                updateCartUI();
+            }
+        }
+
+        // Toggle cart
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('active');
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            alert(`Thank you for your order!\n\nItems: ${itemCount}\nTotal: ₹${total}\n\nYour order will be processed shortly.`);
+            
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+    </script>
+</html>
