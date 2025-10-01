@@ -56,18 +56,21 @@
             text-decoration: none;
         }
 
-        .nav-logo i {
+        .nav-logo i 
+        {
             margin-right: 10px;
             color: #dc2626;
         }
 
-        .nav-menu {
+        .nav-menu 
+        {
             display: flex;
             gap: 30px;
             align-items: center;
         }
 
-        .nav-link {
+        .nav-link 
+        {
             color: white;
             text-decoration: none;
             font-weight: 500;
@@ -231,17 +234,38 @@
             box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
         }
 
-        /* Products Section */
-        .products-section {
+        .products-section 
+        {
             padding: 60px 0;
             background: white;
         }
 
         .products-grid {
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            gap: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
             margin-top: 40px;
+        }
+
+        .product-type-section {
+            margin-bottom: 0;
+        }
+
+        .product-type-heading {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ff6b35;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .products-grid-inner {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
         .product-card {
@@ -295,6 +319,48 @@
             font-size:0.9rem;
         }
 
+        .product-main-type-section {
+            margin-bottom: 60px;
+        }
+
+        .product-main-type-heading {
+            font-size: 32px;
+            font-weight: 800;
+            color: #dc2626;
+            margin-bottom: 30px;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #dc2626 0%, #ff6b35 100%);
+            color: white;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Category Section (nested under type) */
+        .product-category-section 
+        {
+            margin-bottom: 40px;
+            padding-left: 20px;
+        }
+
+        .product-category-heading {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ff6b35;
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+        }
+
+        .products-grid-inner {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
         .add-to-cart {
             background: linear-gradient(45deg, #dc2626, #f59e0b);
             color: white;
@@ -331,7 +397,8 @@
         }
 
         /* Error State */
-        .error-state {
+        .error-state 
+        {
             text-align: center;
             padding: 60px 20px;
             color: #dc2626;
@@ -340,6 +407,16 @@
         .error-state i {
             font-size: 3rem;
             margin-bottom: 20px;
+        }
+
+        /*Center loading and error state*/
+        .loading,
+        .error-state {
+            grid-column: 1 / -1; /* take full width of grid */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Cart Modal */
@@ -472,18 +549,121 @@
             text-align: center;
             padding: 60px 20px;
         }
+        
+        /* Checkout Form Styles */
+        .checkout-form {
+            display: none;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 15px;
+            margin-top: 20px;
+            animation: fadeInUp 0.5s ease;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .checkout-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-control:focus {
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+            outline: none;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            position: sticky;
+            bottom: 0;
+            background: #f9fafb;
+            padding: 15px 0;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #dc2626, #f59e0b);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
         /* Responsive */
-
         @media (min-width: 600px) {
-            .products-grid {
+            .products-grid-inner {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (min-width: 900px) {
-            .products-grid {
+            .products-grid-inner {
                 grid-template-columns: repeat(4, 1fr);
+                gap:25px;
+            }
+
+            .product-main-type-heading {
+                font-size: 36px;
+            }
+            .product-category-heading {
+                font-size: 24px;
             }
 
             .product-card {
@@ -508,17 +688,32 @@
                 padding: 12px 30px;
                 font-size: 1rem;
             }
+            .product-type-heading {
+                font-size: 28px;
+            }
         }
 
         /* Desktop: 4-5 columns */
         @media (min-width: 1200px) {
-            .products-grid {
-                grid-template-columns: repeat(4, 1fr);
+            .products-grid-inner {
+                grid-template-columns: repeat(5, 1fr);
                 gap: 30px;
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 768px) 
+        {
+            .product-main-type-heading {
+                font-size: 24px;
+                padding: 12px 15px;
+            }
+            .product-category-heading {
+                font-size: 18px;
+            }
+            .product-category-section {
+                padding-left: 10px;
+            }
+
             .nav-menu {
                 position: fixed;
                 left: -100%;
@@ -544,9 +739,34 @@
 
             .hero-subtitle {
                 font-size: 1rem;
-            }    
+            }
+
+            .product-type-heading {
+                font-size: 20px;
+            }      
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
         }
         @media (max-width: 480px) {
+
+            .product-main-type-heading {
+                font-size: 20px;
+                padding: 10px 12px;
+                letter-spacing: 1px;
+            }
+            .product-category-heading {
+                font-size: 16px;
+            }
+            .product-category-section {
+                padding-left: 5px;
+            }
+
             .nav-container {
                 padding: 0 15px;
             }
@@ -568,50 +788,25 @@
             }
 
             .products-grid {
-                gap: 15px;
+                gap: 30px;
             }
 
             .product-card {
                 padding: 15px;
             }
+
+            .products-grid-inner {
+                gap: 15px;
+            }
+
+            .product-type-heading {
+                font-size: 18px;
+            }
         }
 
-        /* Footer specific styles
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .contact-item i {
-            color: #fbbf24;
-            margin-top: 2px;
-        }
-
-        .contact-item {
-            justify-content: center;
-            align-items: center;
-        }
-
-        .contact-item span {
-            text-align: left;
-        }
-
-        .contact-item:nth-child(3) {
-            flex-direction: column;
-        }
-
-        .contact-item:nth-child(3) span {
-            text-align: center;
-        } */
-
-    .footer {
+        /*Footer specific styles*/
+        /* Footer specific styles */
+.footer {
     background: #1f2937;
     color: white;
     padding: 60px 0 20px;
@@ -1079,7 +1274,6 @@
         padding: 30px 20px;
     }
 }
-
     </style>
 
 </head>
@@ -1092,12 +1286,13 @@
                 <span>SRG PYRO PARK</span>
             </a>
             
-             <div class="nav-menu" id="nav-menu">
+            <div class="nav-menu" id="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
+                <a href="about.hmtl" class="nav-link">About</a>
                 <a href="productlist.html" class="nav-link">Products</a>
                 <a href="safety.html" class="nav-link">Safety Tips</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href=contact.htl" class="nav-link">Contact</a>
+                
             </div>
             <div class="cart-icon" onclick="toggleCart()">
                     <i class="fas fa-shopping-cart"></i>
@@ -1126,15 +1321,16 @@
             <input type="text" class="search-bar" id="search-input" placeholder="Search for crackers...">
             <div class="category-filters">
                 <button class="category-btn active" data-category="all">All Products</button>
-                <button class="category-btn" data-category="sparklers">Sparklers</button>
-                <button class="category-btn" data-category="rockets">Rockets</button>
-                <button class="category-btn" data-category="fountains">Fountains</button>
-                <button class="category-btn" data-category="wheels">Wheels</button>
-                <button class="category-btn" data-category="bombs">Sound Crackers</button>
+                <button class="category-btn" data-category="sound-crackers">Sound Crackers</button>
+                <button class="category-btn" data-category="ground-crackers">Ground Crackers</button>
+                <button class="category-btn" data-category="sky-crackers">Sky Crackers</button>
+                <button class="category-btn" data-category="gift-boxes">Gift Boxes</button>
+                <button class="category-btn" data-category="new-varieties">New Varieties</button>
+                <button class="category-btn" data-category="combos">Combo Pack</button>
             </div>
         </div>
     </section>
-
+    
     <!-- Products Section -->
     <section class="products-section">
         <div class="container">
@@ -1147,7 +1343,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Cart Modal -->
     <div class="cart-modal" id="cart-modal">
         <div class="cart-content">
@@ -1160,10 +1356,54 @@
             </div>
             <div class="cart-total">
                 <h3>Total: ₹<span id="cart-total">0</span></h3>
-                <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+                <button class="checkout-btn" onclick="showCheckoutForm()">Proceed to Checkout</button>
+                
+                <!-- Checkout Form -->
+                <div class="checkout-form" id="checkout-form">
+                    <h3 class="form-title">Shipping Information</h3>
+                    <div class="form-group">
+                        <label for="customer-name">Full Name</label>
+                        <input type="text" id="customer-name" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customer-state">State</label>
+                            <input type="text" id="customer-state" class="form-control" placeholder="Enter your state" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customer-city">City</label>
+                            <input type="text" id="customer-city" class="form-control" placeholder="Enter your city" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer-address">Address</label>
+                        <textarea id="customer-address" class="form-control" rows="3" placeholder="Enter your complete address" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customer-email">Email</label>
+                            <input type="email" id="customer-email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customer-mobile">Mobile Number</label>
+                            <input type="tel" id="customer-mobile" class="form-control" placeholder="Enter your mobile number" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="hideCheckoutForm()">Cancel</button>
+                        <button type="button" class="btn btn-primary" onclick="processOrder()">Submit Order</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    
 
     <!-- Footer -->
     <footer id="contact" class="footer">
@@ -1278,12 +1518,13 @@
                     id: item.id,
                     name: item.product_name || item.productName,
                     price: item.net_rate || item.netRate,
-                    category: (item.product_category || item.productCategory || '').toLowerCase(),
+                    category: (item.product_category || item.productCategory || ''),
                     description: `Premium ${item.product_name || item.productName}`,
-                    image: getCategoryIcon(item.product_category || item.productCategory)
+                    image: getCategoryIcon(item.product_category || item.productCategory),
+                    type: item.productType
                 }));
 
-                displayProducts(products);
+                displayProductsByTypeAndCategory(products);
 
             } catch (error) {
                 console.error('Error fetching products:', error);
@@ -1300,6 +1541,126 @@
             }
         }
 
+        function groupProductsByTypeAndCategory(productsToShow) {
+            const grouped = {};
+            
+            productsToShow.forEach(product => {
+                const type = product.type || 'Other';
+                const category = product.category || 'Other';
+                
+                if (!grouped[type]) {
+                    grouped[type] = {};
+                }
+                if (!grouped[type][category]) {
+                    grouped[type][category] = [];
+                }
+                grouped[type][category].push(product);
+            });
+            
+            return grouped;
+        }
+
+        // Display products grouped by type
+        function displayProductsByTypeAndCategory(productsToShow) {
+            const grid = document.getElementById('products-grid');
+            
+            if (productsToShow.length === 0) {
+                grid.innerHTML = '<div class="empty-state"><h3>No products found</h3><p>Try adjusting your search or filters</p></div>';
+                return;
+            }
+
+            const groupedProducts = groupProductsByTypeAndCategory(productsToShow);
+            
+            // Define order for product types
+            const typeOrder = ['Sound Crackers', 'Ground Crackers', 'Sky Crackers', 'New Varieties', 'Gift Boxes', 'Combos','Other'];
+            
+            const categoryOrderMap = {
+                'Sound Crackers': [
+                    'One sound Crackers',
+                    'Mega sound crackers',
+                    'Giant Chrosa',
+                    'Gardland',
+                    'Bomb Varieties',
+                    'Stone'
+                ],
+                'Ground Crackers': [
+                    'Flower Pots',
+                    'Ground Chakar',
+                    'Twinkling stars',
+                    'Sparklers',
+                    'Matches'
+                ],
+                'Sky Crackers': [
+                    'Rocket',
+                    'Multi Color pencil'
+                ],
+                'New Varieties': [
+                    'New Varieties Ground Chakara',
+                    '2025 New Varieties',
+                    'New Variety Tin',
+                    'Smoke'
+                ],
+                'Gift Boxes': [
+                    'Gift Box',
+                    'Matches'
+                ],
+                'Combos': [
+                    'Combo Pack',
+                ],
+            };
+
+            let html = '';
+            
+            typeOrder.forEach(type => {
+                if (groupedProducts[type]) {
+                    // Add type heading
+                    html += `<div class="product-main-type-section">
+                                <h1 class="product-main-type-heading">${type}</h1>`;
+                    
+                    const categoryOrder = categoryOrderMap[type] || [];
+                    
+                    // Display categories in order
+                    categoryOrder.forEach(category => {
+                        if (groupedProducts[type][category] && groupedProducts[type][category].length > 0) {
+                            html += createCategorySection(category, groupedProducts[type][category]);
+                        }
+                    });
+                    
+                    // Display any remaining categories not in the order list
+                    Object.keys(groupedProducts[type]).forEach(category => {
+                        if (!categoryOrder.includes(category)) {
+                            html += createCategorySection(category, groupedProducts[type][category]);
+                        }
+                    });
+                    
+                    html += '</div>';
+                }
+            });
+            
+            grid.innerHTML = html;
+        }
+
+        // Create HTML for a category section
+        function createCategorySection(categoryName, products) {
+            return `
+                <div class="product-category-section">
+                    <h2 class="product-category-heading">${categoryName}</h2>
+                    <div class="products-grid-inner">
+                        ${products.map(product => `
+                            <div class="product-card">
+                                <div class="product-image">${product.image}</div>
+                                <h3 class="product-name">${product.name}</h3>
+                                <div class="product-price">₹${product.price}</div>
+                                <p class="product-description">${product.description}</p>
+                                <button class="add-to-cart" onclick="addToCart(${product.id})">
+                                    <i class="fas fa-cart-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
 
         function getCategoryIcon(category) {
             if (!category) return categoryIcons.default;
@@ -1330,22 +1691,7 @@
 
         // Display products
         function displayProducts(productsToShow) {
-            const grid = document.getElementById('products-grid');
-            
-            if (productsToShow.length === 0) {
-                grid.innerHTML = '<div class="empty-state"><h3>No products found</h3><p>Try adjusting your search or filters</p></div>';
-                return;
-            }
-
-            grid.innerHTML = productsToShow.map(product => `
-                <div class="product-card">
-                    <div class="product-image">${product.image}</div>
-                    <h3 class="product-name">${product.name}</h3>
-                    <div class="product-price">₹${product.price}</div>
-                    <p class="product-description">${product.description}</p>
-                    <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
-                </div>
-            `).join('');
+            displayProductsByTypeAndCategory(productsToShow);
         }
 
         // Search functionality
@@ -1442,20 +1788,67 @@
         function toggleCart() {
             const modal = document.getElementById('cart-modal');
             modal.classList.toggle('active');
+            // Reset form when closing cart
+            if (!modal.classList.contains('active')) {
+                hideCheckoutForm();
+            }
         }
 
-        // Checkout
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
+        // Show checkout form
+        function showCheckoutForm() {
+            // if (cart.length === 0) {
+            //     alert('Your cart is empty!');
+            //     return;
+            // }
+            
+            document.getElementById('checkout-form').classList.add('active');
+            document.querySelector('.checkout-btn').style.display = 'none';
+        }
+        
+        // Hide checkout form
+        function hideCheckoutForm() {
+            document.getElementById('checkout-form').classList.remove('active');
+            document.querySelector('.checkout-btn').style.display = 'block';
+            // Reset form fields
+            document.getElementById('checkout-form').reset();
+        }
+        
+        // Process order
+        function processOrder() {
+            const name = document.getElementById('customer-name').value;
+            const state = document.getElementById('customer-state').value;
+            const city = document.getElementById('customer-city').value;
+            const address = document.getElementById('customer-address').value;
+            const email = document.getElementById('customer-email').value;
+            const mobile = document.getElementById('customer-mobile').value;
+            
+            // Simple validation
+            if (!name || !state || !city || !address || !email || !mobile) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Mobile validation (simple check for 10 digits)
+            const mobileRegex = /^\d{10}$/;
+            if (!mobileRegex.test(mobile)) {
+                alert('Please enter a valid 10-digit mobile number');
                 return;
             }
             
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             
-            alert(`Thank you for your order!\n\nItems: ${itemCount}\nTotal: ₹${total}\n\nYour order will be processed shortly.`);
+            alert(`Thank you for your order, ${name}!\n\nItems: ${itemCount}\nTotal: ₹${total}\n\nYour order will be delivered to:\n${address}, ${city}, ${state}\n\nWe'll contact you at ${mobile} and ${email} for confirmation.`);
             
+            // Reset form and cart
+            hideCheckoutForm();
             cart = [];
             updateCartUI();
             toggleCart();
