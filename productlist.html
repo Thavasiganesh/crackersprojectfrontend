@@ -232,16 +232,40 @@
         }
 
         /* Products Section */
+
+
+
         .products-section {
             padding: 60px 0;
             background: white;
         }
 
         .products-grid {
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            gap: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
             margin-top: 40px;
+        }
+
+        .product-type-section {
+            margin-bottom: 0;
+        }
+
+        .product-type-heading {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ff6b35;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .products-grid-inner {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
         .product-card {
@@ -295,6 +319,47 @@
             font-size:0.9rem;
         }
 
+        .product-main-type-section {
+            margin-bottom: 60px;
+        }
+
+        .product-main-type-heading {
+            font-size: 32px;
+            font-weight: 800;
+            color: #dc2626;
+            margin-bottom: 30px;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #dc2626 0%, #ff6b35 100%);
+            color: white;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Category Section (nested under type) */
+        .product-category-section {
+            margin-bottom: 40px;
+            padding-left: 20px;
+        }
+
+        .product-category-heading {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ff6b35;
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+        }
+
+        .products-grid-inner {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
         .add-to-cart {
             background: linear-gradient(45deg, #dc2626, #f59e0b);
             color: white;
@@ -340,6 +405,16 @@
         .error-state i {
             font-size: 3rem;
             margin-bottom: 20px;
+        }
+
+        /*Center loading and error state*/
+        .loading,
+        .error-state {
+            grid-column: 1 / -1; /* take full width of grid */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Cart Modal */
@@ -476,14 +551,22 @@
         /* Responsive */
 
         @media (min-width: 600px) {
-            .products-grid {
+            .products-grid-inner {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (min-width: 900px) {
-            .products-grid {
+            .products-grid-inner {
                 grid-template-columns: repeat(4, 1fr);
+                gap:25px;
+            }
+
+            .product-main-type-heading {
+                font-size: 36px;
+            }
+            .product-category-heading {
+                font-size: 24px;
             }
 
             .product-card {
@@ -508,17 +591,32 @@
                 padding: 12px 30px;
                 font-size: 1rem;
             }
+            .product-type-heading {
+                font-size: 28px;
+            }
         }
 
         /* Desktop: 4-5 columns */
         @media (min-width: 1200px) {
-            .products-grid {
-                grid-template-columns: repeat(4, 1fr);
+            .products-grid-inner {
+                grid-template-columns: repeat(5, 1fr);
                 gap: 30px;
             }
         }
 
         @media (max-width: 768px) {
+            
+            .product-main-type-heading {
+                font-size: 24px;
+                padding: 12px 15px;
+            }
+            .product-category-heading {
+                font-size: 18px;
+            }
+            .product-category-section {
+                padding-left: 10px;
+            }
+
             .nav-menu {
                 position: fixed;
                 left: -100%;
@@ -546,9 +644,25 @@
                 font-size: 1rem;
             }
 
+            .product-type-heading {
+                font-size: 20px;
+            }    
             
         }
         @media (max-width: 480px) {
+
+            .product-main-type-heading {
+                font-size: 20px;
+                padding: 10px 12px;
+                letter-spacing: 1px;
+            }
+            .product-category-heading {
+                font-size: 16px;
+            }
+            .product-category-section {
+                padding-left: 5px;
+            }
+
             .nav-container {
                 padding: 0 15px;
             }
@@ -570,97 +684,186 @@
             }
 
             .products-grid {
-                gap: 15px;
+                gap: 30px;
             }
 
             .product-card {
                 padding: 15px;
             }
+
+            .products-grid-inner {
+                gap: 15px;
+            }
+
+            .product-type-heading {
+                font-size: 18px;
+            }
         }
 
         /*Footer specific styles*/
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        /* Footer specific styles */
+.footer {
+    background: #1f2937;
+    color: white;
+    padding: 60px 0 20px;
+}
 
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
 
-        .contact-item i {
-            color: #fbbf24;
-            margin-top: 2px;
-        }
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
 
-        .contact-item {
-            justify-content: center;
-            align-items: center;
-        }
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
-        .contact-item span {
-            text-align: left;
-        }
+.footer-logo i {
+    margin-right: 10px;
+    color: #fbbf24;
+}
 
-        .contact-item:nth-child(3) {
-            flex-direction: column;
-        }
+.footer-section p {
+    color: #d1d5db;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    text-align: center;
+}
 
-        .contact-item:nth-child(3) span {
-            text-align: center;
-        }
-
-        .footer {
-        background: #1f2937;
-        color: white;
-        padding: 60px 0 20px;
-    }
-
-    .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 40px;
-        margin-bottom: 40px;
-    }
-
-    .footer-logo {
-        display: flex;
-        align-items: center;
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
-
-    .footer-logo i {
-        margin-right: 10px;
-        color: #fbbf24;
-    }
-
-    .footer-section p {
-        color: #d1d5db;
-        margin-bottom: 20px;
-        line-height: 1.6;
-    }
-        .footer-section h3 {
+.footer-section h3 {
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 20px;
     color: #fbbf24;
+    text-align: center;
 }
-.footer-bottom {
-    border-top: 1px solid #374151;
-    padding-top: 20px;
+
+.rating {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    color: #fbbf24;
+    font-size: 1.2rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact-item i {
+    color: #fbbf24;
+    font-size: 1.1rem;
+    min-width: 20px;
+}
+
+.contact-item span {
+    text-align: left;
+    color: #d1d5db;
+}
+
+.contact-item:nth-child(3) {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.hours {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     text-align: center;
     color: #d1d5db;
 }
 
-.footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+.hours div {
+    line-height: 1.6;
+}
+
+.safety-notice {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(251, 191, 36, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid #fbbf24;
+}
+
+.safety-notice strong {
+    color: #fbbf24;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 20px;
+    margin-top: 40px;
+    text-align: center;
+    color: #d1d5db;
+}
+
+/* Responsive Footer */
+@media (min-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
     }
+}
+
+@media (max-width: 767px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .footer-logo {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo {
+        font-size: 1.2rem;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    .contact-item {
+        font-size: 0.9rem;
+    }
+    
+    .hours {
+        font-size: 0.9rem;
+    }
+}
+
 
     </style>
 
@@ -709,11 +912,11 @@
             <input type="text" class="search-bar" id="search-input" placeholder="Search for crackers...">
             <div class="category-filters">
                 <button class="category-btn active" data-category="all">All Products</button>
-                <button class="category-btn" data-category="sparklers">Sparklers</button>
-                <button class="category-btn" data-category="rockets">Rockets</button>
-                <button class="category-btn" data-category="fountains">Fountains</button>
-                <button class="category-btn" data-category="wheels">Wheels</button>
-                <button class="category-btn" data-category="bombs">Sound Crackers</button>
+                <button class="category-btn" data-category="sound-crackers">Sound Crackers</button>
+                <button class="category-btn" data-category="ground-crackers">Ground Crackers</button>
+                <button class="category-btn" data-category="sky-crackers">Sky Crackers</button>
+                <button class="category-btn" data-category="gift-boxes">Gift Boxes</button>
+                <button class="category-btn" data-category="new-varieties">New Varieties</button>
             </div>
         </div>
     </section>
@@ -861,12 +1064,13 @@
                     id: item.id,
                     name: item.product_name || item.productName,
                     price: item.net_rate || item.netRate,
-                    category: (item.product_category || item.productCategory || '').toLowerCase(),
+                    category: (item.product_category || item.productCategory || ''),
                     description: `Premium ${item.product_name || item.productName}`,
-                    image: getCategoryIcon(item.product_category || item.productCategory)
+                    image: getCategoryIcon(item.product_category || item.productCategory),
+                    type: item.productType
                 }));
 
-                displayProducts(products);
+                displayProductsByTypeAndCategory(products);
 
             } catch (error) {
                 console.error('Error fetching products:', error);
@@ -883,6 +1087,122 @@
             }
         }
 
+        function groupProductsByTypeAndCategory(productsToShow) {
+            const grouped = {};
+            
+            productsToShow.forEach(product => {
+                const type = product.type || 'Other';
+                const category = product.category || 'Other';
+                
+                if (!grouped[type]) {
+                    grouped[type] = {};
+                }
+                if (!grouped[type][category]) {
+                    grouped[type][category] = [];
+                }
+                grouped[type][category].push(product);
+            });
+            
+            return grouped;
+        }
+
+        // Display products grouped by type
+        function displayProductsByTypeAndCategory(productsToShow) {
+            const grid = document.getElementById('products-grid');
+            
+            if (productsToShow.length === 0) {
+                grid.innerHTML = '<div class="empty-state"><h3>No products found</h3><p>Try adjusting your search or filters</p></div>';
+                return;
+            }
+
+            const groupedProducts = groupProductsByTypeAndCategory(productsToShow);
+            
+            // Define order for product types
+            const typeOrder = ['Sound Crackers', 'Ground Crackers', 'Sky Crackers', 'New Varieties', 'Gift Box', 'Other'];
+            
+            const categoryOrderMap = {
+                'Sound Crackers': [
+                    'One sound Crackers',
+                    'Mega sound crackers',
+                    'Giant Chrosa',
+                    'Gardland',
+                    'Bomb Varieties',
+                    'Stone'
+                ],
+                'Ground Crackers': [
+                    'Flower Pots',
+                    'Ground Chakar',
+                    'Twinkling stars',
+                    'Sparklers'
+                ],
+                'Sky Crackers': [
+                    'Rocket',
+                    'Multi Color pencil'
+                ],
+                'New Varieties': [
+                    'New Varieties Ground Chakara',
+                    '2025 New Varieties',
+                    'New Variety Tin',
+                    'Smoke'
+                ],
+                'Gift Box': [
+                    'Gift Box',
+                    'Matches'
+                ]
+            };
+
+            let html = '';
+            
+            typeOrder.forEach(type => {
+                if (groupedProducts[type]) {
+                    // Add type heading
+                    html += `<div class="product-main-type-section">
+                                <h1 class="product-main-type-heading">${type}</h1>`;
+                    
+                    const categoryOrder = categoryOrderMap[type] || [];
+                    
+                    // Display categories in order
+                    categoryOrder.forEach(category => {
+                        if (groupedProducts[type][category] && groupedProducts[type][category].length > 0) {
+                            html += createCategorySection(category, groupedProducts[type][category]);
+                        }
+                    });
+                    
+                    // Display any remaining categories not in the order list
+                    Object.keys(groupedProducts[type]).forEach(category => {
+                        if (!categoryOrder.includes(category)) {
+                            html += createCategorySection(category, groupedProducts[type][category]);
+                        }
+                    });
+                    
+                    html += '</div>';
+                }
+            });
+            
+            grid.innerHTML = html;
+        }
+
+                // Create HTML for a category section
+        function createCategorySection(categoryName, products) {
+            return `
+                <div class="product-category-section">
+                    <h2 class="product-category-heading">${categoryName}</h2>
+                    <div class="products-grid-inner">
+                        ${products.map(product => `
+                            <div class="product-card">
+                                <div class="product-image">${product.image}</div>
+                                <h3 class="product-name">${product.name}</h3>
+                                <div class="product-price">₹${product.price}</div>
+                                <p class="product-description">${product.description}</p>
+                                <button class="add-to-cart" onclick="addToCart(${product.id})">
+                                    <i class="fas fa-cart-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
 
         function getCategoryIcon(category) {
             if (!category) return categoryIcons.default;
@@ -913,22 +1233,24 @@
 
         // Display products
         function displayProducts(productsToShow) {
-            const grid = document.getElementById('products-grid');
+            // const grid = document.getElementById('products-grid');
             
-            if (productsToShow.length === 0) {
-                grid.innerHTML = '<div class="empty-state"><h3>No products found</h3><p>Try adjusting your search or filters</p></div>';
-                return;
-            }
+            // if (productsToShow.length === 0) {
+            //     grid.innerHTML = '<div class="empty-state"><h3>No products found</h3><p>Try adjusting your search or filters</p></div>';
+            //     return;
+            // }
 
-            grid.innerHTML = productsToShow.map(product => `
-                <div class="product-card">
-                    <div class="product-image">${product.image}</div>
-                    <h3 class="product-name">${product.name}</h3>
-                    <div class="product-price">₹${product.price}</div>
-                    <p class="product-description">${product.description}</p>
-                    <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
-                </div>
-            `).join('');
+            // grid.innerHTML = productsToShow.map(product => `
+            //     <div class="product-card">
+            //         <div class="product-image">${product.image}</div>
+            //         <h3 class="product-name">${product.name}</h3>
+            //         <div class="product-price">₹${product.price}</div>
+            //         <p class="product-description">${product.description}</p>
+            //         <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+            //     </div>
+            // `).join('');
+
+            displayProductsGrouped(productsToShow);
         }
 
         // Search functionality
