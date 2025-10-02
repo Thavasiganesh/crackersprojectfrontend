@@ -917,6 +917,7 @@
                 <button class="category-btn" data-category="sky-crackers">Sky Crackers</button>
                 <button class="category-btn" data-category="gift-boxes">Gift Boxes</button>
                 <button class="category-btn" data-category="new-varieties">New Varieties</button>
+                <button class="category-btn" data-category="combos">Combo Packs</button>
             </div>
         </div>
     </section>
@@ -1118,7 +1119,7 @@
             const groupedProducts = groupProductsByTypeAndCategory(productsToShow);
             
             // Define order for product types
-            const typeOrder = ['Sound Crackers', 'Ground Crackers', 'Sky Crackers', 'New Varieties', 'Gift Box', 'Other'];
+            const typeOrder = ['Sound Crackers', 'Ground Crackers', 'Sky Crackers', 'New Varieties', 'Gift Boxes','Combos', 'Other'];
             
             const categoryOrderMap = {
                 'Sound Crackers': [
@@ -1133,7 +1134,8 @@
                     'Flower Pots',
                     'Ground Chakar',
                     'Twinkling stars',
-                    'Sparklers'
+                    'Sparklers',
+                    'Matches'
                 ],
                 'Sky Crackers': [
                     'Rocket',
@@ -1145,9 +1147,11 @@
                     'New Variety Tin',
                     'Smoke'
                 ],
-                'Gift Box': [
-                    'Gift Box',
-                    'Matches'
+                'Gift Boxes': [
+                    'Gift Box'
+                ],
+                'Combos':[
+                    'Combo Pack'
                 ]
             };
 
