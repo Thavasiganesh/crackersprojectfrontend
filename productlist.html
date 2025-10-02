@@ -1810,11 +1810,11 @@
             document.getElementById('checkout-form').classList.remove('active');
             document.querySelector('.checkout-btn').style.display = 'block';
             // Reset form fields
-            document.getElementById('checkout-form').reset();
+            document.getElementById('checkout-form').reset;
         }
         
         // Process order
-        function processOrder() {
+        async function processOrder() {
             const name = document.getElementById('customer-name').value;
             const state = document.getElementById('customer-state').value;
             const city = document.getElementById('customer-city').value;
@@ -1824,7 +1824,7 @@
             
             // Simple validation
             if (!name || !state || !city || !address || !email || !mobile) {
-                alert('Please fill in all fields');
+                alert('Please fill all details');
                 return;
             }
             
@@ -1843,16 +1843,88 @@
             }
             
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0
+                );
             
-            alert(`Thank you for your order, ${name}!\n\nItems: ${itemCount}\nTotal: ₹${total}\n\nYour order will be delivered to:\n${address}, ${city}, ${state}\n\nWe'll contact you at ${mobile} and ${email} for confirmation.`);
-            
-            // Reset form and cart
-            hideCheckoutForm();
-            cart = [];
-            updateCartUI();
-            toggleCart();
+            // Prepare order data
+            const orderData = {
+                customerName: name,
+                customerMobile: mobile,
+                customerEmail: email,
+                customerAddress: address,
+                customerCity: city,
+                customerState: state,
+                items: cart.map(item => ({
+                    productId: item.id,
+                    productName: item.name,
+                    quantity: item.quantity,
+                    price: item.price
+                })),
+                totalAmount: total,
+                totalItems: itemCount
+            };
+
+            // alert(`Thank you for your order, ${name}!\n\nItems: ${itemCount}\nTotal: ₹${total}\n\nYour order will be delivered to:\n${address}, ${city}, ${state}\n\nWe'll contact you at ${mobile} and ${email} for confirmation.`);
+
+            try {
+        // Send order to backend
+        const response = await fetch(`${API_BASE_URL}/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to process order');
         }
+        
+        const result = await response.json();
+        
+        // Create WhatsApp message
+        const itemsList = cart.map(item => 
+            `${item.name} - Qty: ${item.quantity} - ₹${item.price * item.quantity}`
+        ).join('\n');
+        
+        const whatsappMessage = `🎆 *New Order Request* 🎆\n\n` +
+            `*Customer Details:*\n` +
+            `Name: ${name}\n` +
+            `Mobile: ${mobile}\n` +
+            `Email: ${email}\n\n` +
+            `*Delivery Address:*\n` +
+            `${address}\n${city}, ${state}\n\n` +
+            `*Order Details:*\n${itemsList}\n\n` +
+            `*Total Items:* ${itemCount}\n` +
+            `*Total Amount:* ₹${total}\n\n` +
+            `Please confirm this order. Thank you!`;
+        
+        // Owner's WhatsApp number (replace with actual number)
+        const ownerWhatsAppNumber = '919952603981'; // Format: country code + number (no + or spaces)
+        
+        // Encode message for URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        
+        // Create WhatsApp URL
+        const whatsappURL = `https://wa.me/${ownerWhatsAppNumber}?text=${encodedMessage}`;
+        
+        // Open WhatsApp
+        window.open(whatsappURL, '_blank');
+        
+        // Show success message
+        alert(`Order submitted successfully!\n\nYou will be redirected to WhatsApp to confirm your order with us.`);
+        
+        // Reset form and cart
+        hideCheckoutForm();
+        cart = [];
+        updateCartUI();
+        toggleCart();
+        
+    } catch (error) {
+        console.error('Error processing order:', error);
+        alert('Failed to process order. Please try again or contact us directly.');
+    }
+}
     </script>
 </body>
 </html>
