@@ -646,6 +646,228 @@
             text-align: center;
         }
 
+        .view-items-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 8px;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+        
+        .view-items-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        #combo-items-modal .modal-content {
+            background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+    position: relative;
+        }
+
+        /* Modal header (title + close button) */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+/* Close button */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #e74c3c;
+}
+
+/* Smooth fade out when closing */
+#combo-items-modal.closing .modal-content {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+        #combo-items-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        padding: 20px;
+        animation: fadeIn 0.3s ease;
+    }
+    
+    #combo-items-modal.closing {
+        animation: fadeOut 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+        @keyframes slideUp {
+        from {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+        .combo-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .combo-info p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        
+        .combo-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .combo-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .combo-item:hover {
+            border-color: #ff6b6b;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .combo-item .item-icon {
+            font-size: 32px;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .combo-item .item-details h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .combo-item .item-details p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .no-items {
+            text-align: center;
+            color: #999;
+            padding: 40px 20px;
+            font-size: 16px;
+        }
+        
+        .modal-footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Product card quantity controls */
+        .product-card .cart-item-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .product-card .qty-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .product-card .qty-btn:hover {
+            background: #991b1b;
+            transform: scale(1.1);
+        }
+
+        .product-card .quantity-display {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #1f2937;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        /* Cart items container when checkout form is active */
+        .checkout-active #cart-items {
+            display: block !important;
+            max-height: 200px !important;
+            overflow-y: auto !important;
+            margin-bottom: 20px !important;
+            border: 1px solid #e5e7eb !important;
+            border-radius: 10px !important;
+            padding: 15px !important;
+        }
+
         /* Responsive */
         @media (min-width: 600px) {
             .products-grid-inner {
@@ -1459,7 +1681,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="items.js"></script>
     <script>
         // Products data from backend endpoint
         const API_BASE_URL = 'http://localhost:8080/api';
@@ -1646,20 +1868,59 @@
                 <div class="product-category-section">
                     <h2 class="product-category-heading">${categoryName}</h2>
                     <div class="products-grid-inner">
-                        ${products.map(product => `
+                        ${products.map(product => {
+                            const isCombo = product.type === 'Combos' || product.category === 'Combo Pack';
+                            const cartItem = cart.find(item => item.id === product.id);
+                            const showQuantityControls = cartItem && cartItem.quantity > 0;
+                            
+                            return `
                             <div class="product-card">
                                 <div class="product-image">${product.image}</div>
                                 <h3 class="product-name">${product.name}</h3>
                                 <div class="product-price">₹${product.price}</div>
                                 <p class="product-description">${product.description}</p>
-                                <button class="add-to-cart" onclick="addToCart(${product.id})">
+                                ${isCombo ? `<button class="view-items-btn" onclick="showComboItems(${product.id})">
+                                <i class="fas fa-info-circle"></i> View Items
+                            </button>` : ''}
+                                <button class="add-to-cart" onclick="addToCart(${product.id})" 
+                                        style="${showQuantityControls ? 'display: none;' : ''}">
                                     <i class="fas fa-cart-plus"></i> Add to Cart
                                 </button>
+                                ${showQuantityControls ? `
+                                    <div class="cart-item-controls">
+                                        <button class="qty-btn" onclick="updateProductQuantity(${product.id}, -1)">-</button>
+                                        <span class="quantity-display">${cartItem.quantity}</span>
+                                        <button class="qty-btn" onclick="updateProductQuantity(${product.id}, 1)">+</button>
+                                    </div>
+                                ` : ''}
                             </div>
-                        `).join('')}
+                        `;}).join('')}
                     </div>
                 </div>
             `;
+        }
+
+        function showComboItems(productId) {
+            const product = products.find(p => p.id === productId);
+            
+            if (!product) return;
+            
+            const items = getComboItemsByProduct(product);
+            
+            if (items.length === 0) {
+                alert('No items found for this combo pack');
+                return;
+            }
+            
+            displayComboItemsModal(product, items);
+
+            // Attach outside click listener
+            setTimeout(() => {
+                const modal = document.getElementById('combo-items-modal');
+                if (modal) {
+                    modal.addEventListener('click', closeComboItemsModalOnOutsideClick);
+                }
+            }, 50);
         }
 
         function getCategoryIcon(category) {
@@ -1681,6 +1942,8 @@
             }
         }
 
+        
+
         // Setup event listeners
         function setupEventListeners() {
             document.getElementById('search-input').addEventListener('input', handleSearch);
@@ -1692,6 +1955,67 @@
         // Display products
         function displayProducts(productsToShow) {
             displayProductsByTypeAndCategory(productsToShow);
+        }
+
+        function displayComboItemsModal(product, items) {
+    // Create modal HTML
+            const modalHTML = `
+                <div id="combo-items-modal" class="modal active">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>${product.name} - Contents</h2>
+                            <button class="close-btn" onclick="closeComboItemsModal()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="combo-info">
+                                <p><strong>Price:</strong> ₹${product.price}</p>
+                                <p><strong>Total Items:</strong> ${items.length}</p>
+                            </div>
+                            <div class="combo-items-list">
+                                ${items.length > 0 ? items.map(item => `
+                                    <div class="combo-item">
+                                        <span class="item-icon">${getCategoryIcon(item.category || item.productCategory)}</span>
+                                        <div class="item-details">
+                                            <h4>${item.name || item.productName}</h4>
+                                            <p>Quantity: ${item.quantity || 1}</p>
+                                        </div>
+                                    </div>
+                                `).join('') : '<p class="no-items">No items available</p>'}
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="add-to-cart" onclick="addToCart(${product.id}); closeComboItemsModal();">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Remove existing modal if any
+            const existingModal = document.getElementById('combo-items-modal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+            
+            // Add modal to body
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+
+        function closeComboItemsModal() {
+            const modal = document.getElementById('combo-items-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        // ADD function to close on outside click
+        function closeComboItemsModalOnOutsideClick(event) {
+            if (event.target.id === 'combo-items-modal') {
+                closeComboItemsModal();
+            }
         }
 
         // Search functionality
@@ -1720,7 +2044,6 @@
             fetchProductsByCategory(category);
         }
 
-
         // Add to cart
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
@@ -1733,6 +2056,65 @@
             }
             
             updateCartUI();
+            updateProductCardButtons(productId); // Update the specific product card
+        }
+
+        // Update product card buttons based on cart status
+        function updateProductCardButtons(productId) {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                const productName = card.querySelector('.product-name').textContent;
+                const product = products.find(p => p.id === productId && p.name === productName);
+                
+                if (product) {
+                    const cartItem = cart.find(item => item.id === productId);
+                    const addToCartBtn = card.querySelector('.add-to-cart');
+                    const existingControls = card.querySelector('.cart-item-controls');
+                    
+                    if (cartItem && cartItem.quantity > 0) {
+                        // Hide add to cart button
+                        if (addToCartBtn) {
+                            addToCartBtn.style.display = 'none';
+                        }
+                        
+                        // Create or update quantity controls
+                        let controls = existingControls;
+                        if (!controls) {
+                            controls = document.createElement('div');
+                            controls.className = 'cart-item-controls';
+                            controls.innerHTML = `
+                                <button class="qty-btn" onclick="updateProductQuantity(${productId}, -1)">-</button>
+                                <span class="quantity-display">${cartItem.quantity}</span>
+                                <button class="qty-btn" onclick="updateProductQuantity(${productId}, 1)">+</button>
+                            `;
+                            addToCartBtn.parentNode.insertBefore(controls, addToCartBtn);
+                        } else {
+                            controls.querySelector('.quantity-display').textContent = cartItem.quantity;
+                        }
+                    } else {
+                        // Show add to cart button and remove controls
+                        if (addToCartBtn) {
+                            addToCartBtn.style.display = 'block';
+                        }
+                        if (existingControls) {
+                            existingControls.remove();
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update quantity from product card
+        function updateProductQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.id !== productId);
+                }
+                updateCartUI();
+                updateProductCardButtons(productId);
+            }
         }
 
         // Update cart UI
@@ -1741,6 +2123,11 @@
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
             updateCartModal();
+            
+            // Update all product card buttons
+            products.forEach(product => {
+                updateProductCardButtons(product.id);
+            });
         }
 
         // Update cart modal
@@ -1796,25 +2183,34 @@
 
         // Show checkout form
         function showCheckoutForm() {
-            // if (cart.length === 0) {
-            //     alert('Your cart is empty!');
-            //     return;
-            // }
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
             
-            document.getElementById('checkout-form').classList.add('active');
+            const checkoutForm = document.getElementById('checkout-form');
+            const cartContent = document.querySelector('.cart-content');
+            
+            checkoutForm.classList.add('active');
+            cartContent.classList.add('checkout-active');
             document.querySelector('.checkout-btn').style.display = 'none';
         }
         
         // Hide checkout form
         function hideCheckoutForm() {
-            document.getElementById('checkout-form').classList.remove('active');
+            const checkoutForm = document.getElementById('checkout-form');
+            const cartContent = document.querySelector('.cart-content');
+            
+            checkoutForm.classList.remove('active');
+            cartContent.classList.remove('checkout-active');
             document.querySelector('.checkout-btn').style.display = 'block';
+            
             // Reset form fields
             document.getElementById('checkout-form').reset();
         }
         
         // Process order
-        function processOrder() {
+        async function processOrder() {
             const name = document.getElementById('customer-name').value;
             const state = document.getElementById('customer-state').value;
             const city = document.getElementById('customer-city').value;
@@ -1824,7 +2220,7 @@
             
             // Simple validation
             if (!name || !state || !city || !address || !email || !mobile) {
-                alert('Please fill in all fields');
+                alert('Please fill all details');
                 return;
             }
             
@@ -1843,16 +2239,89 @@
             }
             
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0
+                );
             
-            alert(`Thank you for your order, ${name}!\n\nItems: ${itemCount}\nTotal: ₹${total}\n\nYour order will be delivered to:\n${address}, ${city}, ${state}\n\nWe'll contact you at ${mobile} and ${email} for confirmation.`);
-            
-            // Reset form and cart
-            hideCheckoutForm();
-            cart = [];
-            updateCartUI();
-            toggleCart();
-        }
+            // Prepare order data
+            const orderData = {
+                customerName: name,
+                customerMobile: mobile,
+                customerEmail: email,
+                customerAddress: address,
+                customerCity: city,
+                customerState: state,
+                items: cart.map(item => ({
+                    productId: item.id,
+                    productName: item.name,
+                    quantity: item.quantity,
+                    price: item.price
+                })),
+                totalAmount: total,
+                totalItems: itemCount
+            };
+
+            // alert(`Thank you for your order, ${name}!\n\nItems: ${itemCount}\nTotal: ₹${total}\n\nYour order will be delivered to:\n${address}, ${city}, ${state}\n\nWe'll contact you at ${mobile} and ${email} for confirmation.`);
+
+        //     try {
+        // // Send order to backend
+        // const response = await fetch(`${API_BASE_URL}/orders`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(orderData)
+        // });
+        
+        // if (!response.ok) {
+        //     throw new Error('Failed to process order');
+        // }
+        
+        // const result = await response.json();
+        
+        // Create WhatsApp message
+        const itemsList = cart.map(item => 
+            `${item.name} - Qty: ${item.quantity} - ₹${item.price * item.quantity}`
+        ).join('\n');
+        
+        const whatsappMessage = `🎆 *New Order Request* 🎆\n\n` +
+            `*Customer Details:*\n` +
+            `Name: ${name}\n` +
+            `Mobile: ${mobile}\n` +
+            `Email: ${email}\n\n` +
+            `*Delivery Address:*\n` +
+            `${address}\n${city}, ${state}\n\n` +
+            `*Order Details:*\n${itemsList}\n\n` +
+            `*Total Items:* ${itemCount}\n` +
+            `*Total Amount:* ₹${total}\n\n` +
+            `Please confirm this order. Thank you!`;
+        
+        // Owner's WhatsApp number (replace with actual number)
+        const ownerWhatsAppNumber = '919952603981'; // Format: country code + number (no + or spaces)
+        
+        // Encode message for URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        
+        // Create WhatsApp URL
+        const whatsappURL = `https://wa.me/${ownerWhatsAppNumber}?text=${encodedMessage}`;
+        
+        // Open WhatsApp
+        window.open(whatsappURL, '_blank');
+        
+        // Show success message
+        alert(`Order submitted successfully!\n\nYou will be redirected to WhatsApp to confirm your order with us.`);
+        
+        // Reset form and cart
+        hideCheckoutForm();
+        cart = [];
+        updateCartUI();
+        toggleCart();
+        
+    } 
+    // catch (error) {
+    //     console.error('Error processing order:', error);
+    //     alert('Failed to process order. Please try again or contact us directly.');
+    // }
+//}
     </script>
 </body>
 </html>
