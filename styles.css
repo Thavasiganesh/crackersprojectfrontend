@@ -775,7 +775,8 @@ body {
     margin-bottom: 20px;
 }
 
-.footer-logo i {
+.footer-logo i 
+{
     margin-right: 10px;
     color: #fbbf24;
 }
@@ -784,6 +785,10 @@ body {
     color: #d1d5db;
     margin-bottom: 20px;
     line-height: 1.6;
+}
+.footer-bottom a
+{
+    color: white;
 }
 
 .rating {
