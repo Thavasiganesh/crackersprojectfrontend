@@ -772,7 +772,7 @@ body {
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
-    /* Removed margin-bottom here to manage spacing better with the new wrapper */
+    margin-bottom: 20px;
 }
 
 .footer-logo i 
@@ -791,12 +791,9 @@ body {
     color: white;
 }
 
-/* FIX: Ensure the rating is explicitly left-aligned */
 .rating {
     display: flex;
     gap: 5px;
-    justify-content: flex-start; /* Forces stars to the left */
-    margin-bottom: 20px; /* Add spacing below the stars */
 }
 
 .rating i {
@@ -1131,19 +1128,27 @@ body {
         grid-template-columns: 1fr;
     }
 
-    /* FIX: Override center alignment for footer on mobile */
     .footer-content {
         grid-template-columns: 1fr;
-        text-align: left; /* Ensures all text is left-aligned */
-    }
-    
-    /* FIX: Align the contact items to the start on mobile */
-    .contact-item {
-        justify-content: flex-start; 
-        align-items: flex-start;
+        text-align: center;
     }
 
-    /* Removed conflicting styles for contact-item:nth-child(3) to maintain left-alignment */
+    .contact-item {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-item span {
+        text-align: left;
+    }
+
+    .contact-item:nth-child(3) {
+        flex-direction: column;
+    }
+
+    .contact-item:nth-child(3) span {
+        text-align: center;
+    }
     
     .category-filters {
         gap: 10px;
