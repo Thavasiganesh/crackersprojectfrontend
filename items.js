@@ -86,11 +86,10 @@ function getComboItemsByProduct(comboName) {
 
     // Extract number from combo name (e.g., "5000 Combo" -> "5000")
     
-    if (comboName.name.includes('5000')) {
-        
+    if (comboName.name.includes('5000'))
+    {
         return comboItems["5000"];
     }
     else
-
         return comboItems["3000"];
 }
