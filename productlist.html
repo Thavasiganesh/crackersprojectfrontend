@@ -2051,9 +2051,12 @@
                                 <h3 class="product-name">${product.name}</h3>
                                 <div class="product-price">₹${product.price}</div>
                                 <p class="product-description">${product.description}</p>
-                                ${isCombo ? `<button class="view-items-btn" onclick="showComboItems(${product.id})">
-                                <i class="fas fa-info-circle"></i> View Items
-                            </button>` : ''}
+                                ${isCombo ? 
+                            //     `<button class="view-items-btn" onclick="showComboItems(${product.id})">
+                            //     <i class="fas fa-info-circle"></i> View Items
+                            // </button>` 
+                            '': ''
+                            }
                                 <button class="add-to-cart" onclick="addToCart(${product.id})" 
                                         style="${showQuantityControls ? 'display: none;' : ''}">
                                     <i class="fas fa-cart-plus"></i> Add to Cart
@@ -2084,7 +2087,7 @@
                 return;
             }
             
-            displayComboItemsModal(product, items);
+            // displayComboItemsModal(product, items);
 
             // Attach outside click listener
             setTimeout(() => {
