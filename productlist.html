@@ -112,6 +112,50 @@
             border-radius: 2px;
         }
 
+        /* Floating Action Buttons */
+        .floating-buttons {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .call-btn {
+            background: linear-gradient(135deg, #34B7F1, #0078D7);
+        }
+
+        .map-btn {
+            background: linear-gradient(135deg, #FF5722, #E64A19);
+        }
+
         /* Hero Section */
         .hero {
             height: 45vh;
@@ -1229,6 +1273,18 @@
                 padding-bottom: 80px;
             }
             
+            /* Floating buttons for mobile */
+            .floating-buttons {
+                left: 15px;
+                bottom: 100px; /* Adjusted to avoid conflict with mobile cart bar */
+            }
+            
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
             /* Cart Modal Mobile Optimizations */
             .cart-modal {
         align-items: flex-start;
@@ -1647,6 +1703,19 @@
             <p class="hero-subtitle">Light up your celebrations with our amazing collection of crackers</p>
         </div>
     </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/919677018593" target="_blank" class="floating-btn whatsapp-btn">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+919677018593" class="floating-btn call-btn">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://www.google.com/maps?q=9.385461142840432,77.914048289036" target="_blank" class="floating-btn map-btn">
+            <i class="fas fa-map-marker-alt"></i>
+        </a>
+    </div>
 
     <!-- Cart Summary Section - Desktop Only -->
     <section class="cart-summary" id="cart-summary">
