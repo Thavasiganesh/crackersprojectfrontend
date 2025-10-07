@@ -156,8 +156,112 @@
             background: linear-gradient(135deg, #FF5722, #E64A19);
         }
 
+        /* Owner Info Section */
+.owner-info-section {
+    background: white;
+    padding: 30px 0;
+    margin-top: 0;
+    color: #dc2626; /* Orange text color */
+}
 
+.owner-info-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
 
+.owner-info-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #dc2626; /* Orange text color */
+}
+
+.owner-info-subtitle {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    color: #dc2626; /* Orange text color */
+}
+
+.owner-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.owner-detail-card {
+    background: white;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    min-width: 280px;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.2); /* Orange shadow */
+    border: 1px solid rgba(220, 38, 38, 0.2); /* Orange border */
+    transition: all 0.3s ease;
+}
+
+.owner-detail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(220, 38, 38, 0.3); /* Orange shadow on hover */
+    background: white;
+}
+
+.owner-detail-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #dc2626; /* Orange icon color */
+}
+
+.owner-detail-label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #dc2626; /* Orange text color */
+}
+
+.owner-detail-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #dc2626; /* Orange text color */
+}
+
+.upi-id-container {
+    background: rgba(220, 38, 38, 0.1); /* Light orange background */
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+    border: 2px dashed rgba(220, 38, 38, 0.4); /* Orange dashed border */
+}
+
+.upi-copy-btn {
+    background: #dc2626; /* Orange background */
+    color: white; /* White text */
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.upi-copy-btn:hover {
+    background: #b91c1c; /* Darker orange on hover */
+    transform: scale(1.05);
+}
         /* Hero Section */
         .hero {
             height: 45vh;
@@ -1274,7 +1378,7 @@
             .products-section {
                 padding-bottom: 80px;
             }
-
+            
             /* Floating buttons for mobile */
             .floating-buttons {
                 left: 15px;
@@ -1285,6 +1389,25 @@
                 width: 50px;
                 height: 50px;
                 font-size: 20px;
+            }
+            
+            /* Owner Info Section Mobile */
+            .owner-info-title {
+                font-size: 1.5rem;
+            }
+            
+            .owner-info-subtitle {
+                font-size: 1rem;
+            }
+            
+            .owner-details {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .owner-detail-card {
+                min-width: 100%;
+                padding: 20px;
             }
             
             /* Cart Modal Mobile Optimizations */
@@ -1438,26 +1561,6 @@
                 font-size: 16px;
                 margin-top: 15px;
             }
-
-            .image-zoom-content {
-        max-width: 95%;
-    }
-    
-    .image-zoom-content img {
-        max-height: 70vh;
-    }
-    
-    .zoom-close-btn {
-        top: -45px;
-        width: 35px;
-        height: 35px;
-        font-size: 18px;
-    }
-    
-    .image-zoom-caption {
-        font-size: 16px;
-        margin-top: 15px;
-    }
         }
         
         @media (max-width: 480px) {
@@ -1517,6 +1620,18 @@
             .mobile-cart-actions button {
                 padding: 7px 12px;
                 font-size: 0.8rem;
+            }
+            
+            .owner-info-title {
+                font-size: 1.3rem;
+            }
+            
+            .owner-info-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .owner-detail-value {
+                font-size: 1.1rem;
             }
         }
 
@@ -1669,49 +1784,6 @@
                 font-size: 0.85rem;
             }
         }
-
-        /* Emoji styles */
-        .product-image.emoji {
-  background: #f5f5f5;
-  border-radius: 8px;
-  height: 100px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  font-size: 3rem; /* similar to product image size */
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover .product-image.emoji {
-  transform: scale(1.05);
-}
-
-/* Optional: same hover zoom effect overlay */
-.product-image.emoji::after {
-  content: '\f00e';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.product-image.emoji:hover::after {
-  opacity: 1;
-}
     </style>
 
 </head>
@@ -1749,7 +1821,46 @@
         </div>
     </section>
 
-     <!-- Floating Action Buttons -->
+    <!-- Owner Information Section -->
+    <section class="owner-info-section">
+        <div class="owner-info-container">
+            <h2 class="owner-info-title">Store Owner Information</h2>
+            <p class="owner-info-subtitle">Contact & Payment Details</p>
+            
+            <div class="owner-details">
+                <div class="owner-detail-card">
+                    <div class="owner-detail-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="owner-detail-label">Owner Name</div>
+                    <div class="owner-detail-value">Mr. Sriram</div>
+                </div>
+                
+                <div class="owner-detail-card">
+                    <div class="owner-detail-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="owner-detail-label">Phone Number</div>
+                    <div class="owner-detail-value">+91 96770 18593</div>
+                </div>
+                
+                <div class="owner-detail-card">
+                    <div class="owner-detail-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <div class="owner-detail-label">UPI ID</div>
+                    <div class="owner-detail-value">9677018593-2@ybl</div>
+                    <div class="upi-id-container">
+                        <button class="upi-copy-btn" onclick="copyUPI()">
+                            <i class="fas fa-copy"></i> Copy UPI ID
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
     <div class="floating-buttons">
         <a href="https://wa.me/919677018593" target="_blank" class="floating-btn whatsapp-btn">
             <i class="fab fa-whatsapp"></i>
@@ -1938,6 +2049,17 @@
             }
         }
 
+        // Copy UPI ID function
+        function copyUPI() {
+            const upiId = '9677018593-2@ybl';
+            navigator.clipboard.writeText(upiId).then(function() {
+                alert('UPI ID copied to clipboard: ' + upiId);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+                alert('Failed to copy UPI ID. Please copy manually: ' + upiId);
+            });
+        }
+
         // Fetch products by category
         async function fetchProductsByCategory(category) {
             const grid = document.getElementById('products-grid');
@@ -2107,10 +2229,9 @@
                             
                             return `
                             <div class="product-card">
-                                <div class="product-image ${isEmojiProduct ? 'emoji' : ''}" onclick="openImageZoom('${product.image}', '${product.name}')">${isEmojiProduct 
-    ? '<span>✨</span>':`<img src="${product.image}" alt="${product.name}" 
+                                <div class="product-image" onclick="openImageZoom('${product.image}', '${product.name}')"><img src="${product.image}" alt="${product.id}" 
                                  onerror="this.onerror=null; this.src='products_images/placeholder.jpg'; this.style.opacity='0.5';"
-                                 loading="lazy">`}</div>
+                                 loading="lazy"></div>
                                 <h3 class="product-name">${product.name}</h3>
                                 <div class="product-price">₹${product.price}</div>
                                 <p class="product-description">${product.description}</p>
@@ -2135,13 +2256,7 @@
         }
 
         function getProductImage(productId) {
-            if (productId===93 || productId===100 || productId===101 ) {
-                return 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="75" font-size="80">✨</text></svg>';
-            }
-            
-
             return `products_images/${productId}.jpeg`;
-
         }
 
         // Setup navbar
@@ -2201,49 +2316,6 @@
                     modal.classList.remove('active');
                     setTimeout(() => modal.remove(), 300);
                 }
-                document.body.style.overflow = '';
-            }
-        }
-
-        function openImageZoom(imageSrc, productName) {
-            const zoomModalHTML = `
-                <div id="image-zoom-modal" class="image-zoom-modal active" onclick="closeImageZoom(event)">
-                    <div class="image-zoom-content">
-                        <button class="zoom-close-btn" onclick="closeImageZoom(event)">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <img src="${imageSrc}" alt="${productName}" 
-                             onerror="this.src='products_images/placeholder.jpg';">
-                        <div class="image-zoom-caption">${productName}</div>
-                    </div>
-                </div>
-            `;
-            
-            // Remove existing zoom modal if any
-            const existingModal = document.getElementById('image-zoom-modal');
-            if (existingModal) {
-                existingModal.remove();
-            }
-            
-            // Add modal to body
-            document.body.insertAdjacentHTML('beforeend', zoomModalHTML);
-            
-            // Prevent body scroll
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Close image zoom modal
-        function closeImageZoom(event) {
-            // Close only if clicking on overlay or close button
-            if (event.target.id === 'image-zoom-modal' || 
-                event.target.classList.contains('zoom-close-btn') ||
-                event.target.parentElement.classList.contains('zoom-close-btn')) {
-                const modal = document.getElementById('image-zoom-modal');
-                if (modal) {
-                    modal.classList.remove('active');
-                    setTimeout(() => modal.remove(), 300);
-                }
-                // Restore body scroll
                 document.body.style.overflow = '';
             }
         }
